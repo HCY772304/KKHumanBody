@@ -22,12 +22,12 @@ Header Length:        56 bytes
 Field Control:        0x0000
 Manufacturer ID:      0x1268
 Image Type:           0x501A
-Firmware Version:     0x00000014
+Firmware Version:     0x00000013
 Stack Version:        0x0002
 Header String:        EBL KKTemplateCodeProject
-Total Image Size:     246494 bytes
+Total Image Size:     245766 bytes
 Total Tags:           1
   ID:                 0x0000   (Upgrade Image)
-  Length:             246432 bytes
+  Length:             245704 bytes
 
 

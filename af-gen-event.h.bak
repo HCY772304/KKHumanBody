@@ -75,12 +75,6 @@
     (*handler)(); \
     emberAfPopNetworkIndex(); \
   } \
-  EmberEventControl emberAfPluginEndDeviceSupportMoveNetworkEventControls[1]; \
-  extern void emberAfPluginEndDeviceSupportMoveNetworkEventHandler(void); \
-  void emberAfPluginEndDeviceSupportMoveNetworkEventWrapper0(void) { networkEventWrapper(&emberAfPluginEndDeviceSupportMoveNetworkEventControls[0], emberAfPluginEndDeviceSupportMoveNetworkEventHandler, 0); } \
-  EmberEventControl emberAfPluginEndDeviceSupportPollingNetworkEventControls[1]; \
-  extern void emberAfPluginEndDeviceSupportPollingNetworkEventHandler(void); \
-  void emberAfPluginEndDeviceSupportPollingNetworkEventWrapper0(void) { networkEventWrapper(&emberAfPluginEndDeviceSupportPollingNetworkEventControls[0], emberAfPluginEndDeviceSupportPollingNetworkEventHandler, 0); } \
   EmberEventControl emberAfPluginScanDispatchScanNetworkEventControls[1]; \
   extern void emberAfPluginScanDispatchScanNetworkEventHandler(void); \
   void emberAfPluginScanDispatchScanNetworkEventWrapper0(void) { networkEventWrapper(&emberAfPluginScanDispatchScanNetworkEventControls[0], emberAfPluginScanDispatchScanNetworkEventHandler, 0); } \
@@ -129,8 +123,6 @@
   { &kkMfglibStopEventControl, kkMfglibStopEventHandler }, \
   { &kkMfglibWaitReceiveEventControl, kkMfglibWaitReceiveEventHandler }, \
   { &kkSystemSetUpEventControl, kkSystemSetUpEventHandler }, \
-  { &emberAfPluginEndDeviceSupportMoveNetworkEventControls[0], emberAfPluginEndDeviceSupportMoveNetworkEventWrapper0 }, \
-  { &emberAfPluginEndDeviceSupportPollingNetworkEventControls[0], emberAfPluginEndDeviceSupportPollingNetworkEventWrapper0 }, \
   { &emberAfPluginScanDispatchScanNetworkEventControls[0], emberAfPluginScanDispatchScanNetworkEventWrapper0 }, \
 
 
@@ -166,8 +158,6 @@
   "Kk mfglib stop event control",  \
   "Kk mfglib wait receive event control",  \
   "Kk system set up event control",  \
-  "End Device Support Plugin Move NWK 0", \
-  "End Device Support Plugin Polling NWK 0", \
   "Scan Dispatch Plugin Scan NWK 0", \
 
 

@@ -992,33 +992,6 @@
 
 /** @} */ // end group plugin-eeprom
 
-/** @addtogroup plugin-end-device-support Plugin Commands: End Device Support
- * @ingroup cli
- * The End Device Support plugin contributes commands for controlling the
- * polling behavior of the device.
- * 
- * @{
- */
-
-/** @brief <b>plugin end-device-support force-short-poll [shortPoll:1] </b>
- *   - <i>Sets whether the CLI forces the device to short poll.</i>
- *     - shortPoll - BOOLEAN - The value indicating whether the device should short poll.
- */
-#define EMBER_AF_DOXYGEN_CLI_COMMAND_PLUGIN_END_DEVICE_SUPPORT_PLUGIN_END_DEVICE_SUPPORT_FORCE_SHORT_POLL
-
-/** @brief <b>plugin end-device-support poll-completed-callback [pollCompletedCallbackCommand:1] </b>
- *   - <i>Sets whether the device's poll completed callback function is enabled.</i>
- *     - pollCompletedCallbackCommand - BOOLEAN - The value indicating whether the device's poll completed callback function is enabled.
- */
-#define EMBER_AF_DOXYGEN_CLI_COMMAND_PLUGIN_END_DEVICE_SUPPORT_PLUGIN_END_DEVICE_SUPPORT_POLL_COMPLETED_CALLBACK
-
-/** @brief <b>plugin end-device-support status </b>
- *   - <i>Display the status of the End Device's polling.</i>
- */
-#define EMBER_AF_DOXYGEN_CLI_COMMAND_PLUGIN_END_DEVICE_SUPPORT_PLUGIN_END_DEVICE_SUPPORT_STATUS
-
-/** @} */ // end group plugin-end-device-support
-
 /** @addtogroup plugin-ias-zone-server Plugin Commands: IAS Zone Server
  * @ingroup cli
  * This plugin provides a set of CLI commands for managing the local IAS Zone
@@ -1534,16 +1507,6 @@
  */
 
 /** @} */ // end group plugin-eeprom
-
-/** @addtogroup plugin-end-device-support Plugin Commands: End Device Support
- * @ingroup cli
- * The End Device Support plugin contributes commands for controlling the
- * polling behavior of the device.
- * 
- * @{
- */
-
-/** @} */ // end group plugin-end-device-support
 
 /** @addtogroup plugin-ias-zone-server Plugin Commands: IAS Zone Server
  * @ingroup cli

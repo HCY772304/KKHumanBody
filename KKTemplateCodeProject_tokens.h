@@ -18,27 +18,6 @@
 // Creator for attribute: Zone ID, endpoint: 1
 #define CREATOR_ZONE_ID_1 0xB003
 #define NVM3KEY_ZONE_ID_1 ( NVM3KEY_DOMAIN_ZIGBEE | 0xB003 )
-// Creator for attribute: SlightMoveSwitch, singleton.
-#define CREATOR_SlightMoveSwitch_SINGLETON 0xB004
-#define NVM3KEY_SlightMoveSwitch_SINGLETON ( NVM3KEY_DOMAIN_ZIGBEE | 0xB004 )
-// Creator for attribute: ExistenceSwitch, singleton.
-#define CREATOR_ExistenceSwitch_SINGLETON 0xB005
-#define NVM3KEY_ExistenceSwitch_SINGLETON ( NVM3KEY_DOMAIN_ZIGBEE | 0xB005 )
-// Creator for attribute: IndicateMode, singleton.
-#define CREATOR_IndicateMode_SINGLETON 0xB006
-#define NVM3KEY_IndicateMode_SINGLETON ( NVM3KEY_DOMAIN_ZIGBEE | 0xB006 )
-// Creator for attribute: Sensitivity, singleton.
-#define CREATOR_Sensitivity_SINGLETON 0xB007
-#define NVM3KEY_Sensitivity_SINGLETON ( NVM3KEY_DOMAIN_ZIGBEE | 0xB007 )
-// Creator for attribute: DelayConfiguration, singleton.
-#define CREATOR_DelayConfiguration_SINGLETON 0xB008
-#define NVM3KEY_DelayConfiguration_SINGLETON ( NVM3KEY_DOMAIN_ZIGBEE | 0xB008 )
-// Creator for attribute: MCUSoftVersion, singleton.
-#define CREATOR_MCUSoftVersion_SINGLETON 0xB009
-#define NVM3KEY_MCUSoftVersion_SINGLETON ( NVM3KEY_DOMAIN_ZIGBEE | 0xB009 )
-// Creator for attribute: MCUHardVersion, singleton.
-#define CREATOR_MCUHardVersion_SINGLETON 0xB00A
-#define NVM3KEY_MCUHardVersion_SINGLETON ( NVM3KEY_DOMAIN_ZIGBEE | 0xB00A )
 
 
 // Types for the tokens
@@ -47,13 +26,6 @@ typedef uint8_t  tokType_zone_state;
 typedef uint16_t  tokType_zone_type;
 typedef uint8_t  tokType_ias_cie_address[8];
 typedef uint8_t  tokType_zone_id;
-typedef uint8_t  tokType_slightmoveswitch;
-typedef uint8_t  tokType_existenceswitch;
-typedef uint8_t  tokType_sensitivity;
-typedef uint8_t  tokType_indicatemode;
-typedef uint16_t  tokType_delayconfiguration;
-typedef uint8_t  tokType_mcusoftversion;
-typedef uint8_t  tokType_mcuhardversion;
 #endif // DEFINETYPES
 
 
@@ -63,13 +35,6 @@ DEFINE_BASIC_TOKEN(ZONE_STATE_1, tokType_zone_state, 0x00)
 DEFINE_BASIC_TOKEN(ZONE_TYPE_1, tokType_zone_type, 0x000D)
 DEFINE_BASIC_TOKEN(IAS_CIE_ADDRESS_1, tokType_ias_cie_address, {0,0,0,0,0,0,0,0})
 DEFINE_BASIC_TOKEN(ZONE_ID_1, tokType_zone_id, 0xFF)
-DEFINE_BASIC_TOKEN(SlightMoveSwitch_SINGLETON, tokType_slightmoveswitch, 0x01)
-DEFINE_BASIC_TOKEN(ExistenceSwitch_SINGLETON, tokType_existenceswitch, 0x01)
-DEFINE_BASIC_TOKEN(IndicateMode_SINGLETON, tokType_indicatemode, 0x01)
-DEFINE_BASIC_TOKEN(Sensitivity_SINGLETON, tokType_sensitivity, 0x32)
-DEFINE_BASIC_TOKEN(DelayConfiguration_SINGLETON, tokType_delayconfiguration, 0x001E)
-DEFINE_BASIC_TOKEN(MCUSoftVersion_SINGLETON, tokType_mcusoftversion, 0xFF)
-DEFINE_BASIC_TOKEN(MCUHardVersion_SINGLETON, tokType_mcuhardversion, 0xFF)
 #endif // DEFINETOKENS
 
 
@@ -78,20 +43,6 @@ DEFINE_BASIC_TOKEN(MCUHardVersion_SINGLETON, tokType_mcuhardversion, 0xFF)
   uint8_t ptr[8]; \
   uint8_t curNetwork = emberGetCurrentNetwork(); \
   uint8_t epNetwork; \
-  halCommonGetToken((tokType_slightmoveswitch *)ptr, TOKEN_SlightMoveSwitch_SINGLETON); \
-  emberAfWriteServerAttribute(1, ZCL_BASIC_CLUSTER_ID, ZCL_SlightMoveSwitch_ATTRIBUTE_ID, (uint8_t*)ptr, ZCL_INT8U_ATTRIBUTE_TYPE); \
-  halCommonGetToken((tokType_existenceswitch *)ptr, TOKEN_ExistenceSwitch_SINGLETON); \
-  emberAfWriteServerAttribute(1, ZCL_BASIC_CLUSTER_ID, ZCL_ExistenceSwitch_ATTRIBUTE_ID, (uint8_t*)ptr, ZCL_INT8U_ATTRIBUTE_TYPE); \
-  halCommonGetToken((tokType_indicatemode *)ptr, TOKEN_IndicateMode_SINGLETON); \
-  emberAfWriteServerAttribute(1, ZCL_BASIC_CLUSTER_ID, ZCL_IndicateMode_ATTRIBUTE_ID, (uint8_t*)ptr, ZCL_INT8U_ATTRIBUTE_TYPE); \
-  halCommonGetToken((tokType_sensitivity *)ptr, TOKEN_Sensitivity_SINGLETON); \
-  emberAfWriteServerAttribute(1, ZCL_BASIC_CLUSTER_ID, ZCL_Sensitivity_ATTRIBUTE_ID, (uint8_t*)ptr, ZCL_INT8U_ATTRIBUTE_TYPE); \
-  halCommonGetToken((tokType_delayconfiguration *)ptr, TOKEN_DelayConfiguration_SINGLETON); \
-  emberAfWriteServerAttribute(1, ZCL_BASIC_CLUSTER_ID, ZCL_DelayConfiguration_ATTRIBUTE_ID, (uint8_t*)ptr, ZCL_INT16U_ATTRIBUTE_TYPE); \
-  halCommonGetToken((tokType_mcusoftversion *)ptr, TOKEN_MCUSoftVersion_SINGLETON); \
-  emberAfWriteServerAttribute(1, ZCL_BASIC_CLUSTER_ID, ZCL_MCUSoftVersion_ATTRIBUTE_ID, (uint8_t*)ptr, ZCL_INT8U_ATTRIBUTE_TYPE); \
-  halCommonGetToken((tokType_mcuhardversion *)ptr, TOKEN_MCUHardVersion_SINGLETON); \
-  emberAfWriteServerAttribute(1, ZCL_BASIC_CLUSTER_ID, ZCL_MCUHardVersion_ATTRIBUTE_ID, (uint8_t*)ptr, ZCL_INT8U_ATTRIBUTE_TYPE); \
   epNetwork = emberAfNetworkIndexFromEndpoint(1); \
   if((endpoint) == 1 || ((endpoint) == EMBER_BROADCAST_ENDPOINT && epNetwork == curNetwork)) { \
     halCommonGetToken((tokType_zone_state *)ptr, TOKEN_ZONE_STATE_1); \
@@ -111,22 +62,6 @@ DEFINE_BASIC_TOKEN(MCUHardVersion_SINGLETON, tokType_mcuhardversion, 0xFF)
   uint8_t allZeroData[8]; \
   MEMSET(allZeroData, 0, 8); \
   if ( data == NULL ) data = allZeroData; \
-  if ( clusterId == 0x00 ) { \
-    if ( metadata->attributeId == 0x8000 && 0x0000 == emberAfGetMfgCode(metadata) &&!emberAfAttributeIsClient(metadata) ) \
-      halCommonSetToken(TOKEN_SlightMoveSwitch_SINGLETON, data); \
-    if ( metadata->attributeId == 0x8001 && 0x0000 == emberAfGetMfgCode(metadata) &&!emberAfAttributeIsClient(metadata) ) \
-      halCommonSetToken(TOKEN_ExistenceSwitch_SINGLETON, data); \
-    if ( metadata->attributeId == 0xE005 && 0x0000 == emberAfGetMfgCode(metadata) &&!emberAfAttributeIsClient(metadata) ) \
-      halCommonSetToken(TOKEN_IndicateMode_SINGLETON, data); \
-    if ( metadata->attributeId == 0xE006 && 0x0000 == emberAfGetMfgCode(metadata) &&!emberAfAttributeIsClient(metadata) ) \
-      halCommonSetToken(TOKEN_Sensitivity_SINGLETON, data); \
-    if ( metadata->attributeId == 0xE007 && 0x0000 == emberAfGetMfgCode(metadata) &&!emberAfAttributeIsClient(metadata) ) \
-      halCommonSetToken(TOKEN_DelayConfiguration_SINGLETON, data); \
-    if ( metadata->attributeId == 0xE008 && 0x0000 == emberAfGetMfgCode(metadata) &&!emberAfAttributeIsClient(metadata) ) \
-      halCommonSetToken(TOKEN_MCUSoftVersion_SINGLETON, data); \
-    if ( metadata->attributeId == 0xE009 && 0x0000 == emberAfGetMfgCode(metadata) &&!emberAfAttributeIsClient(metadata) ) \
-      halCommonSetToken(TOKEN_MCUHardVersion_SINGLETON, data); \
-  }\
   if ( endpoint == 1 ) { \
     if ( clusterId == 0x0500 ) { \
       if ( metadata->attributeId == 0x0000 && 0x0000 == emberAfGetMfgCode(metadata) &&!emberAfAttributeIsClient(metadata) ) \

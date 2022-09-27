@@ -9,19 +9,16 @@
 // Init function declarations.
 void emberAfMainInitCallback(void);  // Global
 void emberAfInit(void);  // Global
-void emberAfPluginEndDeviceSupportInitCallback(void);  // Plugin: end-device-support
 
 void emAfInit(void)
 {
   emberAfMainInitCallback();  // Global
   emberAfInit();  // Global
-  emberAfPluginEndDeviceSupportInitCallback();  // Plugin: end-device-support
 }
 
 // Tick function declarations.
 void emberAfMainTickCallback(void);  // Global
 void emberAfTick(void);  // Global
-void emberAfPluginEndDeviceSupportTickCallback(void);  // Plugin: end-device-support
 void emberAfPluginHeartbeatTickCallback(void);  // Plugin: heartbeat
 void emberAfPluginIdleSleepTickCallback(void);  // Plugin: idle-sleep
 
@@ -29,7 +26,6 @@ void emAfTick(void)
 {
   emberAfMainTickCallback();  // Global
   emberAfTick();  // Global
-  emberAfPluginEndDeviceSupportTickCallback();  // Plugin: end-device-support
   emberAfPluginHeartbeatTickCallback();  // Plugin: heartbeat
   emberAfPluginIdleSleepTickCallback();  // Plugin: idle-sleep
 }
